@@ -1,0 +1,8 @@
+<ul>
+  @for (contact of contacts; track $index) {
+    <li>
+      {{ contact.nombre }} - {{ contact.telefono }}
+      <button (click)="remove($index)">Eliminar</button>
+    </li>
+  }
+</ul>
