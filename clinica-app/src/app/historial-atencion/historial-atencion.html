@@ -1,0 +1,9 @@
+<div class="panel">
+  <h3>Historial de atención</h3>
+
+  <ul>
+    @for (entrada of historial; track $index) {
+      <li>{{ entrada }}</li>
+    }
+  </ul>
+</div>

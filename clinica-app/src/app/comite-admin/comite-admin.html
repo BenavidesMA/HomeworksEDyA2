@@ -1,0 +1,15 @@
+<div class="panel">
+  <h3>Comité administrativo</h3>
+  <p>{{ miembroActual }}</p>
+
+  <ul>
+    @for (miembro of miembros; track $index) {
+      <li>{{ miembro }}</li>
+    }
+  </ul>
+
+  <input placeholder="Nombre del miembro" (change)="cambiarNombre($event)" [value]="nombreNuevo" />
+  <button (click)="agregar()">Agregar miembro</button>
+  <button (click)="anterior()">Anterior</button>
+  <button (click)="siguiente()">Siguiente</button>
+</div>

@@ -1,0 +1,13 @@
+<div class="panel">
+  <h3>Pacientes en espera</h3>
+
+  <ul>
+    @for (paciente of pacientes; track $index) {
+      <li>{{ paciente }}</li>
+    }
+  </ul>
+
+  <input placeholder="Nombre del paciente" (change)="cambiarNombre($event)" [value]="nombreNuevo" />
+  <button (click)="agregar()">Agregar paciente</button>
+  <button (click)="atender()">Atender siguiente</button>
+</div>

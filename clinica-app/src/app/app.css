@@ -1,0 +1,9 @@
+.contenedor {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 5px solid #93d3b9;
+  border-radius: 10px;
+}
