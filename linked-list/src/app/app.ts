@@ -1,12 +1,21 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { PlaylistCanciones } from './playlist-canciones/playlist-canciones';
+import { PaginasNavegador } from './paginas-navegador/paginas-navegador';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [PlaylistCanciones, PaginasNavegador],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
-  protected readonly title = signal('linked-list');
+  vista = signal<'playlist' | 'navegador'>('playlist');
+
+  mostrarPlaylist() {
+    this.vista.set('playlist');
+  }
+
+  mostrarNavegador() {
+    this.vista.set('navegador');
+  }
 }

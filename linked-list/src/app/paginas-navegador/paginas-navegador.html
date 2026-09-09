@@ -1,1 +1,7 @@
-<p>paginas-navegador works!</p>
+<div class="navegador">
+  <h3>🌐 Página actual:</h3>
+  <p>{{ paginaActual() }}</p>
+
+  <button (click)="atras()" [disabled]="!hayAnterior()">⬅ Atrás</button>
+  <button (click)="adelante()" [disabled]="!haySiguiente()">Adelante ➡</button>
+</div>

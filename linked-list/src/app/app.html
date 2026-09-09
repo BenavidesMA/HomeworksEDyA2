@@ -1,0 +1,10 @@
+<div class="menu">
+  <button (click)="mostrarPlaylist()">🎵 Playlist</button>
+  <button (click)="mostrarNavegador()">🌐 Navegador</button>
+</div>
+
+@if (vista() === 'playlist') {
+  <app-playlist-canciones></app-playlist-canciones>
+} @else {
+  <app-paginas-navegador></app-paginas-navegador>
+}

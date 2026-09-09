@@ -1,1 +1,8 @@
-<p>playlist-canciones works!</p>
+<div class="reproductor">
+  <h3>🎵 Reproduciendo:</h3>
+  <p>{{ cancionActual() }}</p>
+
+  <button (click)="siguienteCancion()" [disabled]="!haySiguiente()">
+    Siguiente ➡
+  </button>
+</div>
