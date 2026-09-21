@@ -1,0 +1,11 @@
+<h2>Pila de libros (tamaño: {{ libros.length }})</h2>
+
+<p *ngIf="libros.length === 0">La pila está vacía</p>
+
+<ul>
+  <li *ngFor="let libro of libros.slice().reverse()">
+    {{ libro.nombre }} - {{ libro.autor }} - {{ libro.editorial }} - ISBN: {{ libro.isbn }}
+  </li>
+</ul>
+
+<button (click)="sacar.emit()">Sacar el del arriba</button>

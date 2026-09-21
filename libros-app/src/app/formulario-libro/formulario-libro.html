@@ -1,0 +1,16 @@
+<h2>Agregar libro</h2>
+<form (ngSubmit)="agregarLibro()">
+  <label>Nombre  </label>
+  <input type="text" [(ngModel)]="nombre" name="nombre">
+
+  <label> ISBN (Número Internacional Normalizado del Libro)  </label>
+  <input type="text" [(ngModel)]="isbn" name="isbn">
+
+  <label> Autor  </label>
+  <input type="text" [(ngModel)]="autor" name="autor">
+
+  <label> Editorial  </label>
+  <input type="text" [(ngModel)]="editorial" name="editorial">
+
+  <button type="submit"> Agregar</button>
+</form>
