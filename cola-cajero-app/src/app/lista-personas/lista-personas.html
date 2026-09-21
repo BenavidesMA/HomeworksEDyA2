@@ -1,0 +1,11 @@
+<h2>Cola del cajero (tamaño: {{ personas.length }})</h2>
+
+<p *ngIf="personas.length === 0">La cola está vacía</p>
+
+<ul>
+  <li *ngFor="let persona of personas">
+    {{ persona.nombre }} - retiro: {{ persona.montoRetiro }} - llegada: {{ persona.fechaLlegada | date:'dd/MM/yyyy' }}
+  </li>
+</ul>
+
+<button (click)="atender.emit()">Atender siguiente</button>

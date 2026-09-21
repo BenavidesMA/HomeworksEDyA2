@@ -1,0 +1,10 @@
+<h2>Agregar persona</h2>
+<form (ngSubmit)="agregarPersona()">
+  <label>Nombre</label>
+  <input type="text" [(ngModel)]="nombre" name="nombre">
+
+  <label>Monto a retirar</label>
+  <input type="number" [(ngModel)]="montoRetiro" name="montoRetiro">
+
+  <button type="submit">Agregar</button>
+</form>
