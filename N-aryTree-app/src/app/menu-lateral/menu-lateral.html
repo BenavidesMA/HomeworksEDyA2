@@ -1,0 +1,34 @@
+<div class="layout">
+  <aside class="sidebar">
+    @for (item of raiz.hijos; track item) {
+      @if (item.hijos.length > 0) {
+        <div class="item" (click)="alternarMenu(item)">
+          <span>{{ item.valor.titulo }}</span>
+          @if (item.abierto) {
+            <span class="flecha">▲</span>
+          } @else {
+            <span class="flecha">▼</span>
+          }
+        </div>
+
+        @if (item.abierto) {
+          @for (sub of item.hijos; track sub) {
+            <div [class]="obtenerClase(sub.valor, 'subitem')" (click)="seleccionar(sub.valor)">
+              {{ sub.valor.titulo }}
+            </div>
+          }
+        }
+      } @else {
+        <div [class]="obtenerClase(item.valor, 'item')" (click)="seleccionar(item.valor)">
+          {{ item.valor.titulo }}
+        </div>
+      }
+    }
+  </aside>
+
+  <main class="contenido">
+    <h2>{{ seleccionado().titulo }}</h2>
+    <p>Enlace: {{ seleccionado().enlace }}</p>
+    <p>Componente: {{ seleccionado().componente }}</p>
+  </main>
+</div>
