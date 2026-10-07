@@ -1,0 +1,12 @@
+<div><h1>Iniciar sesión</h1>
+
+<form (ngSubmit)="entrar()">
+  <input name="email" [(ngModel)]="email" placeholder="Email" required />
+  <input name="password" type="password" [(ngModel)]="password" placeholder="Contraseña" required />
+  <button type="submit">Entrar</button>
+</form>
+
+</div>
+@if (error !== '') {
+  <p>{{ error }}</p>
+}
