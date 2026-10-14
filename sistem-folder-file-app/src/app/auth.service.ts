@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { auth } from './firebase.config';
 
 @Injectable({ providedIn: 'root' })
@@ -9,6 +9,10 @@ export class AuthService {
     return signInWithEmailAndPassword(auth, correo, clave);
   }
 
+    registrar(correo: string, clave: string) {
+    return createUserWithEmailAndPassword(auth, correo, clave);
+  }
+  
   cerrarSesion() {
     return signOut(auth);
   }
