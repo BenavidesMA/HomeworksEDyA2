@@ -1,0 +1,59 @@
+$azul: #3f6ad8;
+
+.barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: $azul;
+  color: white;
+
+  h1 { font-size: 20px; margin: 0; }
+
+  .usuario {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  button {
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+}
+
+.crear, .arbol {
+  max-width: 720px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.crear {
+  .formulario { display: flex; gap: 8px; }
+
+  input { flex: 1; }
+
+  input, select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+
+  button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background: $azul;
+    color: white;
+    cursor: pointer;
+  }
+
+  .error { color: #c0392b; margin: 8px 0 0; }
+}

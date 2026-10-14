@@ -1,0 +1,14 @@
+INFORMACIÓN IMPORTANTE PARA EL SISTEMA JERÁRQUICO DE CARPETAS Y ARCHIVOS
+
+Usuarios Registrados Para Inicio de Sesión:
+
+User: user1@mail.com
+Password: 123abc
+
+User: user2@mail.com
+Password: 456def
+
+Archivos y Carpetas Creadas Previamente con User1:
+
+-PruebaArchivo1
+-PruebaCarpeta1

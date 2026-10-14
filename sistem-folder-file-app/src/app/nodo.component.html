@@ -1,0 +1,22 @@
+<div class="nodo">
+  <div class="fila" [class.seleccionado]="arbol.idSeleccionado == nodo.id" (click)="seleccionar()">
+    @if (nodo.tipo == 'carpeta') {
+      <span class="icono">📁</span>
+    }
+    @if (nodo.tipo == 'archivo') {
+      <span class="icono">📄</span>
+    }
+    <span class="nombre">{{ nodo.nombre }}</span>
+    @if (nodo.id != 'raiz') {
+      <span class="correo">creado por {{ nodo.correo }}</span>
+    }
+  </div>
+
+  @if (nodo.hijos.length > 0) {
+    <div class="hijos">
+      @for (hijo of nodo.hijos; track hijo.id) {
+        <app-nodo [nodo]="hijo"></app-nodo>
+      }
+    </div>
+  }
+</div>

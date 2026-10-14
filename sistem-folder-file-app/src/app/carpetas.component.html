@@ -1,0 +1,24 @@
+<header class="barra">
+  <h1>Sistema de carpetas y archivos</h1>
+  <div class="usuario">
+    <span>{{ correo }}</span>
+    <button (click)="salir()">Salir</button>
+  </div>
+</header>
+
+<section class="crear">
+  <p>Se creará dentro de: <strong>{{ arbol.nombreSeleccionado() }}</strong></p>
+  <div class="formulario">
+    <input placeholder="Nombre" [(ngModel)]="nombre">
+    <select [(ngModel)]="tipo">
+      <option value="carpeta">Carpeta</option>
+      <option value="archivo">Archivo</option>
+    </select>
+    <button (click)="crear()">Crear</button>
+  </div>
+  <p class="error">{{ mensaje }}</p>
+</section>
+
+<section class="arbol">
+  <app-nodo [nodo]="arbol.estructura.raiz"></app-nodo>
+</section>
