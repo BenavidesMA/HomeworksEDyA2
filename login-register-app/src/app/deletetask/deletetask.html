@@ -1,0 +1,8 @@
+<div class="pagina">
+  <h2>Eliminar tarea</h2>
+
+  <p>¿Seguro que quieres eliminar la tarea <strong>{{ titulo() }}</strong>?</p>
+
+  <button type="button" class="btn btn-danger me-2" (click)="handleDelete()">Eliminar</button>
+  <a routerLink="/tareas" class="btn btn-secondary">Cancelar</a>
+</div>

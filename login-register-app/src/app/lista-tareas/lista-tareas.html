@@ -1,0 +1,40 @@
+<div class="pagina">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Mis tareas</h2>
+    <div>
+      <span class="me-2">{{ auth.usuario() }}</span>
+      <button type="button" class="btn btn-outline-danger btn-sm" (click)="handleLogout()">
+        Cerrar sesión
+      </button>
+    </div>
+  </div>
+
+  <a routerLink="/createtask" class="btn btn-primary mb-3">Nueva tarea</a>
+
+  @if (tareas.cargando()) {
+    <p>Cargando...</p>
+  }
+
+  <ul class="list-group">
+    @for (tarea of tareas.lista(); track tarea.id) {
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <input
+            type="checkbox"
+            class="form-check-input me-2"
+            [checked]="tarea.completada"
+            (change)="cambiarEstado(tarea)"
+          />
+          <span [class]="obtenerClase(tarea)">{{ tarea.titulo }}</span>
+          <small class="d-block text-muted">{{ tarea.descripcion }}</small>
+        </div>
+        <div>
+          <a [routerLink]="['/edittask', tarea.id]" class="btn btn-sm btn-warning me-1">Editar</a>
+          <a [routerLink]="['/deletetask', tarea.id]" class="btn btn-sm btn-danger">Eliminar</a>
+        </div>
+      </li>
+    } @empty {
+      <li class="list-group-item">No hay tareas</li>
+    }
+  </ul>
+</div>

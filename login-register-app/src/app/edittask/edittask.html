@@ -1,0 +1,25 @@
+<div class="pagina">
+  <h2>Editar tarea</h2>
+
+  <div class="mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Título"
+      [ngModel]="titulo()"
+      (ngModelChange)="titulo.set($event)"
+    />
+  </div>
+
+  <div class="mb-3">
+    <textarea
+      class="form-control"
+      placeholder="Descripción"
+      [ngModel]="descripcion()"
+      (ngModelChange)="descripcion.set($event)"
+    ></textarea>
+  </div>
+
+  <button type="button" class="btn btn-primary me-2" (click)="handleEdit()">Guardar</button>
+  <a routerLink="/tareas" class="btn btn-secondary">Cancelar</a>
+</div>
