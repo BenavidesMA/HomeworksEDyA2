@@ -1,0 +1,11 @@
+<div class="contenedor">
+  <div class="tarjeta centrado">
+    <h1>Mi perfil</h1>
+
+    @if (url()) { <img class="avatar" [src]="url()" width="160"> }
+
+    <input type="file" accept="image/*" (change)="subir($event)">
+
+    <a routerLink="/tareas" class="enlace">Volver a tareas</a>
+  </div>
+</div>

@@ -1,0 +1,236 @@
+$color-primario: #6c63ff;
+$color-primario-oscuro: #574fd6;
+$color-secundario: #e9e8ff;
+$color-peligro: #ff5c7a;
+$color-peligro-oscuro: #e8456a;
+$color-texto: #2d3047;
+$color-texto-suave: #8a8fa8;
+$color-fondo-1: #6c63ff;
+$color-fondo-2: #48c6ef;
+$color-borde: #e3e5f0;
+$radio: 12px;
+$espacio: 8px;
+
+@mixin tarjeta {
+  background-color: white;
+  border-radius: $radio * 2;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+@mixin boton($fondo, $fondo-hover, $texto: white) {
+  background-color: $fondo;
+  color: $texto;
+
+  &:hover {
+    background-color: $fondo-hover;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  color: $color-texto;
+  background: linear-gradient(135deg, $color-fondo-1, $color-fondo-2);
+}
+
+.contenedor {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $espacio * 2;
+}
+
+.tarjeta {
+  @include tarjeta;
+  width: 100%;
+  max-width: 440px;
+  padding: $espacio * 4;
+
+  h1 {
+    margin: 0 0 $espacio;
+    font-size: 28px;
+  }
+
+  .subtitulo {
+    margin: 0 0 $espacio * 3;
+    color: $color-texto-suave;
+  }
+
+  &.centrado {
+    text-align: center;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: $espacio * 1.5;
+}
+
+.formulario-tarea {
+  flex-direction: row;
+  margin-bottom: $espacio * 2;
+
+  input {
+    flex: 1;
+  }
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+  width: 100%;
+  padding: $espacio * 1.5 $espacio * 2;
+  border: 2px solid $color-borde;
+  border-radius: $radio;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &:focus {
+    border-color: $color-primario;
+    box-shadow: 0 0 0 3px rgba($color-primario, 0.2);
+  }
+}
+
+input[type='file'] {
+  font-size: 14px;
+  color: $color-texto-suave;
+  margin-bottom: $espacio * 2;
+
+  &::file-selector-button {
+    @include boton($color-primario, $color-primario-oscuro);
+    padding: $espacio $espacio * 2;
+    margin-right: $espacio * 1.5;
+    border: none;
+    border-radius: $radio;
+    cursor: pointer;
+  }
+}
+
+.btn {
+  padding: $espacio * 1.5 $espacio * 2.5;
+  border: none;
+  border-radius: $radio;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.btn-primario {
+  @include boton($color-primario, $color-primario-oscuro);
+}
+
+.btn-secundario {
+  @include boton($color-secundario, #d9d7ff, $color-primario);
+}
+
+.btn-peligro {
+  @include boton($color-peligro, $color-peligro-oscuro);
+}
+
+.btn-pequeno {
+  padding: $espacio $espacio * 1.5;
+  font-size: 13px;
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $espacio * 3;
+
+  h1 {
+    margin: 0;
+  }
+}
+
+.mensaje {
+  margin: $espacio * 2 0 0;
+  padding: $espacio * 1.5;
+  border-radius: $radio;
+  background-color: $color-secundario;
+  color: $color-primario-oscuro;
+  text-align: center;
+  font-size: 14px;
+}
+
+.enlace {
+  display: inline-block;
+  margin-top: $espacio * 2;
+  color: $color-primario;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $espacio * 1.5 $espacio * 2;
+    margin-bottom: $espacio;
+    background-color: #f6f7fb;
+    border-radius: $radio;
+    transition: transform 0.15s, box-shadow 0.15s;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    &.vacio {
+      justify-content: center;
+      color: $color-texto-suave;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: $espacio * 1.5;
+      flex: 1;
+      cursor: pointer;
+    }
+
+    input[type='checkbox'] {
+      width: 18px;
+      height: 18px;
+      accent-color: $color-primario;
+      cursor: pointer;
+
+      &:checked + span {
+        text-decoration: line-through;
+        color: $color-texto-suave;
+      }
+    }
+  }
+}
+
+.avatar {
+  display: block;
+  margin: 0 auto $espacio * 2;
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid $color-primario;
+}

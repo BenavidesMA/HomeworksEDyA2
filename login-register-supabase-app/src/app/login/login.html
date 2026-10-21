@@ -1,0 +1,22 @@
+<div class="contenedor">
+  <div class="tarjeta">
+    <h1>Bienvenido</h1>
+    <p class="subtitulo">Inicia sesión o crea tu cuenta</p>
+
+    <form (ngSubmit)="entrar()">
+      <input type="email" name="email"
+             [(ngModel)]="email"
+             placeholder="Correo">
+      <input type="password" name="clave"
+             [(ngModel)]="clave"
+             placeholder="Contraseña">
+      <button type="submit" class="btn btn-primario">Entrar</button>
+      <button type="button" class="btn btn-secundario"
+              (click)="registrar()">
+        Crear cuenta
+      </button>
+    </form>
+
+    @if (msg()) { <p class="mensaje">{{ msg() }}</p> }
+  </div>
+</div>

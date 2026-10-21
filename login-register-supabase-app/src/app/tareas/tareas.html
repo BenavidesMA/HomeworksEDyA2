@@ -1,0 +1,30 @@
+<div class="contenedor">
+  <div class="tarjeta">
+    <div class="encabezado">
+      <h1>Mis tareas</h1>
+      <button class="btn btn-peligro btn-pequeno" (click)="salir()">Cerrar sesión</button>
+    </div>
+
+    <form class="formulario-tarea" (ngSubmit)="agregar()">
+      <input type="text" name="nueva" [(ngModel)]="nueva" placeholder="Nueva tarea" required>
+      <button type="submit" class="btn btn-primario">Agregar</button>
+    </form>
+
+    <ul class="lista">
+      @for (t of tareas(); track t.id) {
+        <li>
+          <label>
+            <input type="checkbox" [checked]="t.completada"
+                   (change)="completar(t.id, !t.completada)">
+            <span>{{ t.titulo }}</span>
+          </label>
+          <button class="btn btn-peligro btn-pequeno" (click)="borrar(t.id)">Borrar</button>
+        </li>
+      } @empty {
+        <li class="vacio">No hay tareas</li>
+      }
+    </ul>
+
+    <a routerLink="/perfil" class="enlace">Mi perfil</a>
+  </div>
+</div>
