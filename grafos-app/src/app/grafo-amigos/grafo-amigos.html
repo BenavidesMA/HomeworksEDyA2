@@ -1,0 +1,49 @@
+<div class="contenedor">
+  <h2>Grafo de amigos y ciudades</h2>
+
+  <div id="contenedor-grafo"></div>
+
+  <h3>Agregar persona</h3>
+  <form class="formulario" (ngSubmit)="agregarPersona()">
+    <input type="text" name="nombre" [(ngModel)]="nombre" placeholder="Nombre">
+    <input type="number" name="edad" [(ngModel)]="edad" placeholder="Edad" min="0">
+
+    <select name="ciudadNueva" [(ngModel)]="ciudadNueva">
+      <option value="">Ciudad</option>
+      @for (ciudad of ciudades; track ciudad) {
+        <option [value]="ciudad">{{ ciudad }}</option>
+      }
+    </select>
+
+    <select name="amigo" [(ngModel)]="amigo">
+      <option value="">Amigo de (opcional)</option>
+      @for (persona of listaPersonas; track persona) {
+        <option [value]="persona">{{ persona }}</option>
+      }
+    </select>
+
+    <button type="submit">Agregar</button>
+  </form>
+
+  @if (msg !== '') {
+    <p class="mensaje">{{ msg }}</p>
+  }
+
+  <h3>Personas que viven en:</h3>
+  <div class="ciudades">
+    @for (ciudad of ciudades; track ciudad) {
+      <button (click)="verPersonas(ciudad)">{{ ciudad }}</button>
+    }
+  </div>
+
+  @if (ciudadActual() !== '') {
+    <h4>{{ ciudadActual() }}</h4>
+    <ul>
+      @for (persona of personas(); track persona.nombre) {
+        <li>{{ persona.nombre }} - {{ persona.edad }} años</li>
+      } @empty {
+        <li>Nadie vive aquí</li>
+      }
+    </ul>
+  }
+</div>
