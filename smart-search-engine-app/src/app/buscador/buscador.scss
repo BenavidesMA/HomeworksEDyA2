@@ -1,0 +1,141 @@
+$color-primario: #26a69a;
+$color-texto: #2d3047;
+$color-fondo: #f4f6f8;
+$color-borde: #e3e5f0;
+$radio: 12px;
+$espacio: 8px;
+
+@mixin tarjeta {
+  background-color: white;
+  border-radius: $radio;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: $espacio * 3;
+}
+
+.contenedor {
+  @include tarjeta;
+  max-width: 800px;
+  margin: $espacio * 4 auto;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: $color-texto;
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: $espacio * 0.5;
+    color: $color-primario;
+  }
+
+  .subtitulo {
+    margin-top: 0;
+    color: #8a8fa8;
+    font-size: 14px;
+  }
+
+  .formulario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $espacio;
+    margin-bottom: $espacio * 2;
+
+    input,
+    select {
+      flex: 1;
+      min-width: 140px;
+      padding: $espacio * 1.5;
+      border: 2px solid $color-borde;
+      border-radius: $radio;
+      font-size: 14px;
+
+      &:focus {
+        outline: none;
+        border-color: $color-primario;
+      }
+    }
+
+    select {
+      flex: 0 0 120px;
+    }
+
+    button {
+      padding: $espacio $espacio * 2.5;
+      border: none;
+      border-radius: $radio;
+      background-color: $color-primario;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.1s;
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  .resultados {
+    list-style: none;
+    margin: 0 0 $espacio * 2;
+    padding: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: $espacio * 1.5;
+      padding: $espacio * 1.5;
+      margin-bottom: $espacio;
+      background-color: $color-fondo;
+      border-radius: $radio;
+    }
+
+    .vacio {
+      justify-content: center;
+      color: #8a8fa8;
+    }
+
+    .posicion {
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      border-radius: 50%;
+      background-color: $color-primario;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .info {
+      flex: 1;
+    }
+
+    .nombre {
+      display: block;
+      margin-bottom: $espacio * 0.5;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+
+    .barra {
+      height: 6px;
+      background-color: $color-borde;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .relleno {
+      height: 100%;
+      background-color: $color-primario;
+    }
+
+    .popularidad {
+      font-weight: 700;
+    }
+  }
+
+  .mensaje {
+    padding: $espacio * 1.5;
+    background-color: $color-fondo;
+    border-radius: $radio;
+    font-size: 14px;
+  }
+}

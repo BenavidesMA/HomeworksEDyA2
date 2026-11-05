@@ -1,0 +1,58 @@
+<div class="contenedor">
+  <h2>Buscador inteligente</h2>
+  <p class="subtitulo">{{ total() }} productos guardados en el Trie</p>
+
+  <h3>Buscar por prefijo</h3>
+  <div class="formulario">
+    <input
+      type="text"
+      name="prefijo"
+      [(ngModel)]="prefijo"
+      (ngModelChange)="buscar()"
+      placeholder="Escribe un prefijo, ej: air"
+    >
+
+    <select name="k" [(ngModel)]="k" (ngModelChange)="buscar()">
+      @for (opcion of [1, 2, 3, 5, 10]; track opcion) {
+        <option [ngValue]="opcion">Top {{ opcion }}</option>
+      }
+    </select>
+  </div>
+
+  @if (buscado()) {
+    <ul class="resultados">
+      @for (producto of resultados(); track producto.name; let i = $index) {
+        <li>
+          <span class="posicion">{{ i + 1 }}</span>
+          <div class="info">
+            <span class="nombre">{{ producto.name }}</span>
+            <div class="barra">
+              <div class="relleno" [style.width.%]="producto.popularity"></div>
+            </div>
+          </div>
+          <span class="popularidad">{{ producto.popularity }}</span>
+        </li>
+      } @empty {
+        <li class="vacio">No hay productos con ese prefijo</li>
+      }
+    </ul>
+  }
+
+  <h3>Agregar producto</h3>
+  <form class="formulario" (ngSubmit)="agregarProducto()">
+    <input type="text" name="nombre" [(ngModel)]="nombre" placeholder="Nombre">
+    <input
+      type="number"
+      name="popularidad"
+      [(ngModel)]="popularidad"
+      placeholder="Popularidad (0 - 100)"
+      min="0"
+      max="100"
+    >
+    <button type="submit">Agregar</button>
+  </form>
+
+  @if (msg !== '') {
+    <p class="mensaje">{{ msg }}</p>
+  }
+</div>
