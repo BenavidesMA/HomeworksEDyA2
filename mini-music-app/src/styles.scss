@@ -1,0 +1,13 @@
+@use 'styles/dashboard' as *;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: $fondo;
+  color: $texto;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}

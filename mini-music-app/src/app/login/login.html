@@ -1,0 +1,23 @@
+<div class="pagina-auth">
+  <div class="tarjeta-auth">
+    <h2>Mini Music</h2>
+
+    <input
+      type="email"
+      placeholder="Email"
+      [ngModel]="email()"
+      (ngModelChange)="email.set($event)"
+    />
+
+    <input
+      type="password"
+      placeholder="Password"
+      [ngModel]="password()"
+      (ngModelChange)="password.set($event)"
+    />
+
+    <button type="button" (click)="handleLogin()">Login</button>
+
+    <p>¿No tienes cuenta? <a routerLink="/register">Regístrate</a></p>
+  </div>
+</div>

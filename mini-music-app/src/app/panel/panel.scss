@@ -1,0 +1,203 @@
+@use '../../styles/dashboard' as *;
+
+.panel {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: $espacio * 3;
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $espacio * 3;
+
+  h1 {
+    margin: 0;
+    color: $verde;
+  }
+
+  button {
+    @include boton($peligro, $peligro-oscuro, $texto);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: $espacio * 2.5;
+}
+
+.tarjeta {
+  @include tarjeta;
+
+  h2 {
+    @include titulo-seccion;
+  }
+}
+
+.formulario {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $espacio;
+
+  input,
+  select {
+    @include campo;
+    flex: 1;
+    min-width: 140px;
+  }
+
+  button {
+    @include boton($verde, $verde-oscuro);
+  }
+}
+
+.lista {
+  list-style: none;
+  padding: 0;
+  margin: $espacio * 2 0 0;
+}
+
+.fila {
+  @include fila-cancion;
+}
+
+.seleccionable {
+  cursor: pointer;
+
+  &:hover strong {
+    color: $verde;
+  }
+}
+
+.posicion {
+  width: 28px;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  color: $verde;
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+
+  strong {
+    display: block;
+  }
+
+  small {
+    color: $texto-suave;
+  }
+}
+
+.barra {
+  height: 6px;
+  margin-top: $espacio * 0.5;
+  border-radius: 3px;
+  background-color: $fondo;
+  overflow: hidden;
+
+  span {
+    display: block;
+    height: 100%;
+    background-color: $verde;
+  }
+}
+
+.boton-escuchar {
+  @include boton($verde, $verde-oscuro);
+  padding: $espacio * 0.75 $espacio * 1.5;
+  font-size: 12px;
+}
+
+.etiqueta {
+  padding: $espacio * 0.5 $espacio;
+  border-radius: $radio;
+  background-color: $fondo;
+  color: $verde;
+  font-size: 12px;
+}
+
+.subtitulo {
+  margin: 0;
+  color: $texto-suave;
+}
+
+.mensaje {
+  margin: $espacio * 1.5 0 0;
+  color: $verde;
+  font-size: 14px;
+}
+
+.vacio {
+  color: $texto-suave;
+}
+
+.reproduciendo {
+  @include tarjeta;
+  position: sticky;
+  top: $espacio * 2;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: $espacio * 2;
+  margin-bottom: $espacio * 2.5;
+  border: 2px solid $verde;
+
+  strong {
+    font-size: 18px;
+  }
+}
+
+.etiqueta-ahora {
+  display: block;
+  color: $verde;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.boton-detener {
+  @include boton($tarjeta-clara, $fondo, $texto);
+}
+
+.ecualizador {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 28px;
+
+  span {
+    width: 5px;
+    height: 100%;
+    border-radius: 2px;
+    background-color: $verde;
+    transform-origin: bottom;
+    animation: rebote 0.9s ease-in-out infinite;
+
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    &:nth-child(4) {
+      animation-delay: 0.1s;
+    }
+  }
+}
+
+@keyframes rebote {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+
+  50% {
+    transform: scaleY(1);
+  }
+}

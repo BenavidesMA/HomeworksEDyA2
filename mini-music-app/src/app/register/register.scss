@@ -1,0 +1,44 @@
+@use '../../styles/dashboard' as *;
+
+.pagina-auth {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $espacio * 2;
+}
+
+.tarjeta-auth {
+  @include tarjeta;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: $espacio * 1.5;
+
+  h2 {
+    margin: 0 0 $espacio;
+    text-align: center;
+    color: $verde;
+  }
+
+  input {
+    @include campo;
+  }
+
+  button {
+    @include boton($verde, $verde-oscuro);
+    width: 100%;
+  }
+
+  p {
+    margin: 0;
+    text-align: center;
+    color: $texto-suave;
+    font-size: 14px;
+
+    a {
+      color: $verde;
+    }
+  }
+}

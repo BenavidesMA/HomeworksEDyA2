@@ -1,0 +1,68 @@
+$verde: #1db954;
+$verde-oscuro: #17a74a;
+$fondo: #121212;
+$tarjeta: #1e1e1e;
+$tarjeta-clara: #2a2a2a;
+$texto: #ffffff;
+$texto-suave: #b3b3b3;
+$peligro: #e5534b;
+$peligro-oscuro: #c9443d;
+$radio: 12px;
+$espacio: 8px;
+
+@mixin tarjeta {
+  background-color: $tarjeta;
+  border-radius: $radio;
+  padding: $espacio * 3;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+@mixin boton($color, $color-hover, $color-texto: #000000) {
+  padding: $espacio $espacio * 2.5;
+  border: none;
+  border-radius: $radio * 2;
+  background-color: $color;
+  color: $color-texto;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+
+  &:hover {
+    background-color: $color-hover;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+@mixin campo {
+  width: 100%;
+  padding: $espacio * 1.5;
+  border: 2px solid $tarjeta-clara;
+  border-radius: $radio;
+  background-color: $tarjeta-clara;
+  color: $texto;
+  font-size: 14px;
+  outline: none;
+
+  &:focus {
+    border-color: $verde;
+  }
+}
+
+@mixin titulo-seccion {
+  margin: 0 0 $espacio * 2;
+  font-size: 18px;
+  color: $texto;
+}
+
+@mixin fila-cancion {
+  display: flex;
+  align-items: center;
+  gap: $espacio * 1.5;
+  padding: $espacio $espacio * 1.5;
+  margin-bottom: $espacio;
+  border-radius: $radio * 0.5;
+  background-color: $tarjeta-clara;
+}

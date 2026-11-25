@@ -1,0 +1,126 @@
+<div class="panel">
+  <header class="encabezado">
+    <h1>Mini Music</h1>
+    <button type="button" (click)="salir()">Cerrar sesión</button>
+  </header>
+
+    @if (cancionActual(); as actual) {
+    <section class="reproduciendo">
+      <div class="ecualizador">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="info">
+        <small class="etiqueta-ahora">Reproduciendo ahora</small>
+        <strong>{{ actual.titulo }}</strong>
+        <small>{{ actual.artista }} · {{ actual.genero }} · {{ actual.reproducciones }} reproducciones</small>
+      </div>
+
+      <button type="button" class="boton-detener" (click)="detener()">Detener</button>
+    </section>
+  }
+
+  <div class="grid">
+    <section class="tarjeta">
+      <h2>Buscador de canciones</h2>
+
+      <div class="formulario">
+        <input
+          type="text"
+          placeholder="Escribe un título..."
+          [ngModel]="busqueda"
+          (ngModelChange)="actualizarSugerencias($event)"
+        />
+        <button type="button" (click)="buscar()">Buscar</button>
+      </div>
+
+      @if (resultadoBusqueda() !== '') {
+        <p class="mensaje">{{ resultadoBusqueda() }}</p>
+      }
+
+        <ul class="lista">
+        @for (cancion of sugerencias(); track cancion.titulo) {
+          <li class="fila">
+            <div class="info seleccionable" (click)="verRecomendaciones(cancion.titulo)">
+              <strong>{{ cancion.titulo }}</strong>
+              <small>{{ cancion.artista }} · {{ cancion.reproducciones }} reproducciones</small>
+            </div>
+            <button type="button" class="boton-escuchar" (click)="escuchar(cancion)">Escuchar</button>
+          </li>
+        }
+      </ul>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Top 5 más escuchadas</h2>
+
+      <ul class="lista">
+        @for (cancion of top(); track cancion.titulo) {
+          <li class="fila">
+            <span class="posicion">{{ $index + 1 }}</span>
+            <div class="info seleccionable" (click)="verRecomendaciones(cancion.titulo)">
+              <strong>{{ cancion.titulo }}</strong>
+              <small>{{ cancion.artista }} · {{ cancion.reproducciones }} reproducciones</small>
+              <div class="barra">
+                <span [style.width.%]="porcentaje(cancion)"></span>
+              </div>
+            </div>
+            <button type="button" class="boton-escuchar" (click)="escuchar(cancion)">Escuchar</button>
+          </li>
+        } @empty {
+          <li class="vacio">No hay canciones</li>
+        }
+      </ul>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Recomendaciones</h2>
+
+      @if (cancionSeleccionada() === '') {
+        <p class="vacio">Selecciona una canción del buscador o del ranking.</p>
+      } @else {
+        <p class="subtitulo">Similares a <strong>{{ cancionSeleccionada() }}</strong></p>
+
+        <ul class="lista">
+          @for (cancion of recomendaciones(); track cancion.titulo) {
+            <li class="fila seleccionable" (click)="verRecomendaciones(cancion.titulo)">
+              <div class="info">
+                <strong>{{ cancion.titulo }}</strong>
+                <small>{{ cancion.artista }}</small>
+              </div>
+              <span class="etiqueta">{{ cancion.genero }}</span>
+            </li>
+          } @empty {
+            <li class="vacio">No hay canciones relacionadas</li>
+          }
+        </ul>
+      }
+    </section>
+
+    <section class="tarjeta">
+      <h2>Agregar canción</h2>
+
+      <form class="formulario" (ngSubmit)="agregarCancion()">
+        <input type="text" name="titulo" [(ngModel)]="titulo" placeholder="Título" />
+        <input type="text" name="artista" [(ngModel)]="artista" placeholder="Artista" />
+
+        <select name="genero" [(ngModel)]="genero">
+          <option value="">Género</option>
+          @for (g of generos; track g) {
+            <option [value]="g">{{ g }}</option>
+          }
+        </select>
+
+        <input type="number" name="reproducciones" [(ngModel)]="reproducciones" placeholder="Reproducciones" min="0" />
+        <button type="submit">Agregar</button>
+      </form>
+
+      @if (msg() !== '') {
+        <p class="mensaje">{{ msg() }}</p>
+      }
+    </section>
+  </div>
+</div>
