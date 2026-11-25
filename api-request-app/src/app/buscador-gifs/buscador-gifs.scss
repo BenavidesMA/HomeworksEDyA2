@@ -1,0 +1,102 @@
+$color-primario: #6c5ce7;
+$color-primario-oscuro: #5a4bd1;
+$color-texto: #2d3047;
+$color-suave: #8a8fa8;
+$color-error: #e5534b;
+$radio: 12px;
+$espacio: 8px;
+
+@mixin tarjeta {
+  background-color: white;
+  border-radius: $radio;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: $espacio * 3;
+}
+
+.contenedor {
+  @include tarjeta;
+  max-width: 900px;
+  margin: $espacio * 4 auto;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: $color-texto;
+
+  h1 {
+    margin-top: 0;
+    color: $color-primario;
+  }
+
+  .formulario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $espacio;
+    margin-bottom: $espacio * 2;
+
+    input {
+      flex: 1;
+      min-width: 200px;
+      padding: $espacio * 1.5;
+      border: 2px solid #e3e5f0;
+      border-radius: $radio;
+      font-size: 15px;
+      outline: none;
+
+      &:focus {
+        border-color: $color-primario;
+      }
+    }
+
+    button {
+      padding: $espacio * 1.5 $espacio * 3;
+      border: none;
+      border-radius: $radio;
+      background-color: $color-primario;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $color-primario-oscuro;
+      }
+    }
+  }
+
+  .mensaje,
+  .vacio {
+    color: $color-suave;
+  }
+
+  .error {
+    color: $color-error;
+  }
+
+  .galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: $espacio * 1.5;
+
+    .gif {
+      display: block;
+      overflow: hidden;
+      border-radius: $radio;
+      transition: transform 0.15s;
+
+      &:hover {
+        transform: scale(1.03);
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .creditos {
+    margin: $espacio * 3 0 0;
+    text-align: center;
+    font-size: 12px;
+    color: $color-suave;
+  }
+}
